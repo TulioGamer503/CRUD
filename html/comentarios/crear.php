@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt_check->num_rows > 0) {
             // ✅ Insertar comentario en la base de datos
-            $sql_insert = "INSERT INTO comentarios (idTarea, idUsuario, comentario) VALUES (?, ?, ?, NOW())";
+            $sql_insert = "INSERT INTO comentarios (idTarea, idUsuario, comentario) VALUES (?, ?, ?) ";
             $stmt_insert = $conn->prepare($sql_insert);
 
             if (!$stmt_insert) {

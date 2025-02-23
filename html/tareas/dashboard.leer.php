@@ -45,8 +45,10 @@ $result = mysqli_query($conn, $query);
                         <td><?= ucfirst($row['prioridad']); ?></td>
                         <td><?= $row['fechaVencimiento']; ?></td>
                         <td>
-                            <a href="actualizar.php?id=<?= $row['idTarea']; ?>" class="btn btn-warning">Editar</a>
-                            <a href="eliminar.php?id=<?= $row['idTarea']; ?>" class="btn btn-danger">Eliminar</a>
+                            <a href="editar.php?id=<?= $row['idTarea']; ?>" class="btn btn-warning">Editar</a>
+                            <a href="eliminar.php?id=<?= $row['idTarea']; ?>" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarea?')">Eliminar
+</a>
+
                         </td>
                     </tr>
                 <?php } ?>

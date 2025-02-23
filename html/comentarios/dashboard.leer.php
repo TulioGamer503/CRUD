@@ -9,16 +9,20 @@ if (!isset($_SESSION["usuario_id"])) {
 
 require '../config/conexion.php'; // Archivo de conexión a la base de datos
 
-$idTarea = $_GET['idTarea'] ?? 0;
-
-$query = "SELECT c.*, u.nombre 
-          FROM comentarios c
-          JOIN usuarios u ON c.idUsuario = u.idUsuario
-          WHERE c.idTarea = ? 
-          ORDER BY c.fechaComentario DESC";
+$query = "SELECT 
+          c.idComentario,
+          c.comentario,
+          c.fechaComentario,
+          c.idUsuario,
+          c.idTarea,
+          u.nombre AS nombreUsuario,
+          t.titulo AS tituloTarea
+        FROM comentarios c
+        JOIN usuarios u ON c.idUsuario = u.idUsuario
+        JOIN tareas t ON c.idTarea = t.idTarea
+        ORDER BY c.fechaComentario DESC";
 
 $stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "i", $idTarea);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 mysqli_stmt_close($stmt);
@@ -34,30 +38,37 @@ mysqli_stmt_close($stmt);
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Comentarios</h2>
-
-        <form action="crear.php" method="post">
-            <input type="hidden" name="idTarea" value="<?= $idTarea; ?>">
-            <div class="mb-3">
-                <textarea name="comentario" class="form-control" placeholder="Escribe un comentario..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Agregar Comentario</button>
-        </form>
-
         <hr>
 
         <h4>Lista de Comentarios</h4>
+        <a href="index.php" class="btn btn-primary mb-3">Regresar</a>
         <ul class="list-group">
-            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+        <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <li class="list-group-item">
-                    <strong><?= htmlspecialchars($row['nombre']); ?>:</strong>
-                    <?= nl2br(htmlspecialchars($row['comentario'])); ?>
-                    <small class="text-muted"> (<?= $row['fechaComentario']; ?>)</small>
-                    <?php if ($row['idUsuario'] == $_SESSION["usuario_id"]) { ?>
-                        <a href="eliminar.php?id=<?= $row['idComentario']; ?>&idTarea=<?= $idTarea; ?>" class="btn btn-danger btn-sm float-end" onclick="return confirm('¿Eliminar este comentario?');">Eliminar</a>
-                    <?php } ?>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <!-- Mostrar nombre de la tarea -->
+                            <h5 class="text-primary"><?= htmlspecialchars($row['tituloTarea']) ?></h5>
+                            <!-- Mostrar nombre de usuario -->
+                            <strong><?= htmlspecialchars($row['nombreUsuario']) ?>:</strong>
+                            <!-- Mostrar comentario con saltos de línea -->
+                            <p class="mb-0"><?= nl2br(htmlspecialchars($row['comentario'])) ?></p>
+                            <!-- Mostrar fecha -->
+                            <small class="text-muted"><?= $row['fechaComentario'] ?></small>
+                        </div>
+                        
+                        <!-- Botón de eliminar solo para el autor -->
+                        <?php if ($row['idUsuario'] == $_SESSION["usuario_id"]): ?>
+                            <div>
+                                <a href="eliminar_confirmacion.php?id=<?= $row['idComentario'] ?>" 
+                                   class="btn btn-danger btn-sm">
+                                    Eliminar
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </li>
-            <?php } ?>
+            <?php endwhile; ?>
         </ul>
     </div>
 </body>

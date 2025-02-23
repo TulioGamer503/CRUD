@@ -3,7 +3,7 @@ session_start();
 
 // Si el usuario no ha iniciado sesión, lo redirige al registro
 if (!isset($_SESSION["usuario_id"])) {
-    header("Location: login.php"); 
+    header("Location: ../login.php"); 
     exit();
 }
 ?>
@@ -49,9 +49,7 @@ if (!isset($_SESSION["usuario_id"])) {
             <div class="col-md-4">
                 <a href="dashboard.leer.php" class="btn btn-primary w-100">Ver Comentarios</a>
             </div>
-            <div class="col-md-4">
-                <a href="eliminar.php" class="btn btn-danger w-100">Eliminar Comentario</a>
-            </div>
+           
         </div>
     </div>
 </body>

@@ -1,29 +1,43 @@
 <?php
 session_start();
+require '../config/conexion.php'; // Archivo de conexión a la base de datos
 
-// Si el usuario no ha iniciado sesión, lo redirige al registro
+// Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["usuario_id"])) {
-    header("Location: login.php"); 
+    header("Location: ../auth/login.php");
     exit();
 }
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Comentario</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>Eliminar Comentario</h2>
-        <p>¿Estás seguro de que deseas eliminar este comentario?</p>
-        <form action="eliminar.php" method="post">
-            <input type="hidden" name="idComentario" id="idComentario">
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-            <a href="leer.php" class="btn btn-secondary">Cancelar</a>
-        </form>
-    </div>
-</body>
-</html>
+
+// Verificar si se recibió el ID del comentario
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["idComentario"])) {
+    $idComentario = $_POST["idComentario"];
+    $usuario_id = $_SESSION["usuario_id"];
+
+    // Verificar si el comentario pertenece al usuario actual
+    $query = "SELECT idUsuario FROM comentarios WHERE idComentario = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $idComentario);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $comentario = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
+
+    if ($comentario && $comentario["idUsuario"] == $usuario_id) {
+        // Eliminar el comentario
+        $query = "DELETE FROM comentarios WHERE idComentario = ?";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "i", $idComentario);
+        if (mysqli_stmt_execute($stmt)) {
+            $_SESSION["mensaje"] = "Comentario eliminado correctamente.";
+        } else {
+            $_SESSION["error"] = "Error al eliminar el comentario.";
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        $_SESSION["error"] = "No puedes eliminar este comentario.";
+    }
+}
+
+// Redirigir a la página de comentarios
+header("Location: dashboard.leer.php");
+exit();
