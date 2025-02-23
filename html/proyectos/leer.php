@@ -46,7 +46,7 @@ $resultado = mysqli_stmt_get_result($stmt);
                         <td><?php echo $proyecto['fechaInicio']; ?></td>
                         <td><?php echo $proyecto['fechaFin']; ?></td>
                         <td>
-                            <a href="actualizar.php?id=<?php echo $proyecto['idProyecto']; ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="editar.php?id=<?php echo $proyecto['idProyecto']; ?>" class="btn btn-warning btn-sm">Editar</a>
                             <a href="eliminar.php?id=<?php echo $proyecto['idProyecto']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que quieres eliminar este proyecto?');">Eliminar</a>
                         </td>
                     </tr>
