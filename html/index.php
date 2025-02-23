@@ -61,11 +61,11 @@ if (!isset($_SESSION["usuario_id"])) {
                 <div class="card-header">Ver y Editar</div>
                 <div class="card-body">
                     <p class="card-text">Consulta, edita y actualiza tus tareas fácilmente.</p>
-                    <a href="tareas/leer.php" class="btn btn-light">Ir a Leer</a>
+                    <a href="tareas/dashboard.leer.php" class="btn btn-light">Ir a Leer</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
             <div class="card text-white bg-danger mb-3">
                 <div class="card-header">Eliminar Tareas</div>
                 <div class="card-body">
@@ -73,7 +73,7 @@ if (!isset($_SESSION["usuario_id"])) {
                     <a href="tareas/eliminar.php" class="btn btn-light">Ir a Eliminar</a>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 

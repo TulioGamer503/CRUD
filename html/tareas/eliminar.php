@@ -1,29 +1,33 @@
 <?php
 session_start();
+require('../bd.php'); // Asegura la conexión a la base de datos
 
-// Si el usuario no ha iniciado sesión, lo redirige al registro
+// Si el usuario no ha iniciado sesión, lo redirige al login
 if (!isset($_SESSION["usuario_id"])) {
-    header("Location: login.php"); 
+    header("Location: login.php");
+    exit();
+}
+
+// Verifica si se recibió el ID de la tarea por POST
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["idTarea"])) {
+    $idTarea = intval($_POST["idTarea"]); // Convierte el ID a entero para seguridad
+
+    // Consulta preparada para eliminar la tarea
+    $sql = "DELETE FROM tareas WHERE idTarea = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $idTarea);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Tarea eliminada con éxito'); window.location='dashboard.leer.php';</script>";
+    } else {
+        echo "<script>alert('Error al eliminar la tarea'); window.location='dashboard.leer.phpleer.php';</script>";
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    // Redirigir si no se envió un ID válido
+    header("Location: dashboard.leer.php");
     exit();
 }
 ?>
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Tarea</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>Eliminar Tarea</h2>
-        <p>¿Estás seguro de que deseas eliminar esta tarea?</p>
-        <form action="eliminar.php" method="post">
-            <input type="hidden" name="idTarea" value="1">
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-            <a href="leer.php" class="btn btn-secondary">Cancelar</a>
-        </form>
-    </div>
-</body>
-</html>

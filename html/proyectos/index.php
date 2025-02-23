@@ -25,13 +25,13 @@ if (!isset($_SESSION["usuario_id"])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="proyectos/index.php">proyectos</a>
+                    <a class="nav-link active" href="../proyectos/index.php">proyectos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="comentarios/index.php">Comentarios</a>
+                    <a class="nav-link" href="../comentarios/index.php">Comentarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="historial/index.php">historial</a>
+                    <a class="nav-link" href="../historial/index.php">historial</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="../php/registro/logout.php">Cerrar Sesión</a>

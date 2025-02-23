@@ -22,6 +22,7 @@ $result = mysqli_query($conn, $query);
 <body>
     <div class="container mt-5">
         <h2>Lista de Tareas</h2>
+        <a href="../index.php" class="btn btn-primary mb-3">Regresar</a>
         <table class="table table-striped">
             <thead>
                 <tr>
