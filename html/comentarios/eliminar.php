@@ -4,7 +4,7 @@ require '../config/conexion.php'; // Archivo de conexión a la base de datos
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["usuario_id"])) {
-    header("Location: ../auth/login.php");
+    header("Location: ../login.php");
     exit();
 }
 

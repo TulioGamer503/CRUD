@@ -4,7 +4,7 @@ require '../config/conexion.php';
 
 // Verifica que el usuario haya iniciado sesión
 if (!isset($_SESSION["usuario_id"])) {
-    header("Location: ../auth/login.php");
+    header("Location: ../login.php");
     exit();
 }
 

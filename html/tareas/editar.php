@@ -9,6 +9,10 @@ if (!$idTarea) {
     echo "ID de tarea no proporcionado.";
     exit();
 }
+if (!isset($_SESSION["usuario_id"])) {
+    header("Location: ../login.php");
+    exit();
+}
 
 // Obtener datos de la tarea si es una solicitud GET
 if ($_SERVER["REQUEST_METHOD"] == "GET") {

@@ -3,7 +3,7 @@ session_start();
 require '../config/conexion.php';
 
 if (!isset($_SESSION["usuario_id"])) {
-    header("Location: ../auth/login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container mt-5">
         <h2>Editar Proyecto</h2>
-        <form action="actualizar.php" method="post">
+        <form action="" method="post">
             <input type="hidden" name="idProyecto" value="<?php echo $proyecto['idProyecto']; ?>">
             <div class="mb-3">
                 <label class="form-label">Nombre del Proyecto</label>

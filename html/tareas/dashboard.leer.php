@@ -1,7 +1,10 @@
 <?php
 session_start();
 require '../config/conexion.php';
-
+if (!isset($_SESSION["usuario_id"])) {
+    header("Location: ../login.php");
+    exit();
+}
 $query = "SELECT t.*, p.nombreProyecto, u.nombre AS usuarioAsignado
           FROM tareas t
           JOIN proyectos p ON t.idProyecto = p.idProyecto

@@ -1,6 +1,10 @@
 <?php
 session_start();
 require '../config/conexion.php';
+if (!isset($_SESSION["usuario_id"])) {
+    header("Location: ../login.php");
+    exit();
+}
 
 // Obtener proyectos y usuarios para los selects
 $proyectos = mysqli_query($conn, "SELECT idProyecto, nombreProyecto FROM proyectos");

@@ -9,7 +9,7 @@ if (!$conn) {
 
 // ✅ Redirigir al login si el usuario no ha iniciado sesión
 if (!isset($_SESSION["usuario_id"])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 

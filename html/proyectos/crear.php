@@ -2,6 +2,11 @@
 session_start();
 require '../config/conexion.php';
 
+if (!isset($_SESSION["usuario_id"])) {
+    header("Location: ../login.php");
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombreProyecto = $_POST['nombreProyecto'];
     $descripcion = $_POST['descripcion'];

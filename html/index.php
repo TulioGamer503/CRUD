@@ -31,9 +31,7 @@ if (!isset($_SESSION["usuario_id"])) {
                 <li class="nav-item">
                     <a class="nav-link" href="comentarios/index.php">Comentarios</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="historial/index.php">historial</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="../php/registro/logout.php">Cerrar Sesión</a>
                 </li>

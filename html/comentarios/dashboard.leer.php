@@ -3,7 +3,7 @@ session_start();
 
 // Si el usuario no ha iniciado sesión, lo redirige al login
 if (!isset($_SESSION["usuario_id"])) {
-    header("Location: ../auth/login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -56,7 +56,13 @@ mysqli_stmt_close($stmt);
                             <!-- Mostrar fecha -->
                             <small class="text-muted"><?= $row['fechaComentario'] ?></small>
                         </div>
-                        
+                        <?php if ($row['idUsuario'] == $_SESSION["usuario_id"]): ?>
+    <div>
+        <a href="editar_comentario.php?id=<?= $row['idComentario'] ?>" class="btn btn-warning btn-sm">
+            Editar
+        </a>
+    </div>
+<?php endif; ?>
                         <!-- Botón de eliminar solo para el autor -->
                         <?php if ($row['idUsuario'] == $_SESSION["usuario_id"]): ?>
                             <div>
