@@ -26,16 +26,16 @@ if (!isset($_SESSION["usuario_id"])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="../tareas/crear.php">Crear</a>
+                    <a class="nav-link active" href="proyectos/index.php">proyectos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../tareas/leer.php">Leer</a>
+                    <a class="nav-link" href="comentarios/index.php">Comentarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../tareas/eliminar.php">Eliminar</a>
+                    <a class="nav-link" href="historial/index.php">historial</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="../auth/logout.php">Cerrar Sesión</a>
+                    <a class="nav-link text-danger" href="../php/registro/logout.php">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -52,7 +52,7 @@ if (!isset($_SESSION["usuario_id"])) {
                 <div class="card-header">Crear Tareas</div>
                 <div class="card-body">
                     <p class="card-text">Organiza tus pendientes y define tus prioridades.</p>
-                    <a href="../tareas/crear.php" class="btn btn-light">Ir a Crear</a>
+                    <a href="tareas/crear.php" class="btn btn-light">Ir a Crear</a>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@ if (!isset($_SESSION["usuario_id"])) {
                 <div class="card-header">Ver y Editar</div>
                 <div class="card-body">
                     <p class="card-text">Consulta, edita y actualiza tus tareas fácilmente.</p>
-                    <a href="../tareas/leer.php" class="btn btn-light">Ir a Leer</a>
+                    <a href="tareas/leer.php" class="btn btn-light">Ir a Leer</a>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@ if (!isset($_SESSION["usuario_id"])) {
                 <div class="card-header">Eliminar Tareas</div>
                 <div class="card-body">
                     <p class="card-text">Elimina tareas que ya no necesitas.</p>
-                    <a href="../tareas/eliminar.php" class="btn btn-light">Ir a Eliminar</a>
+                    <a href="tareas/eliminar.php" class="btn btn-light">Ir a Eliminar</a>
                 </div>
             </div>
         </div>

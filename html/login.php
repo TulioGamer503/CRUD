@@ -10,7 +10,7 @@
   <body>
     <div class="container mt-5">
       <h2>Iniciar Sesión</h2>
-      <form action="login.php" method="post">
+      <form action="../php/registro/login.php" method="post">
         <div class="mb-3">
           <input type="email" name="correo" class="form-control" placeholder="Correo" required>
         </div>

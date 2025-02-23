@@ -10,7 +10,7 @@
   <body>
     <div class="container mt-5">
       <h2>Registro</h2>
-      <form action="registro.php" method="post">
+      <form action="../php/registro/registro.php" method="post">
         <div class="mb-3">
           <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
         </div>

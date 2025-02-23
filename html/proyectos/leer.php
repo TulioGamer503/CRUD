@@ -27,7 +27,7 @@ $resultado = mysqli_stmt_get_result($stmt);
 <body>
     <div class="container mt-5">
         <h2>Tus Proyectos</h2>
-        <a href="crear.php" class="btn btn-primary mb-3">Crear Nuevo Proyecto</a>
+        <a href="index.php" class="btn btn-primary mb-3">Regresar</a>
         <table class="table table-bordered">
             <thead>
                 <tr>
