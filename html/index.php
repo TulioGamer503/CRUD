@@ -62,7 +62,7 @@ if (!isset($_SESSION["usuario_id"])) {
             <div class="card text-white bg-primary mb-3">
                 <div class="card-header">Crear Un nuevo Proyecto</div>
                 <div class="card-body">
-                    <p class="card-text">Crea Proyectos en los que estes trabajando actualmente.</p>
+                    <p class="card-text">Crea proyectos facilmente.</p>
                     <a href="proyectos/index.php" class="btn btn-outline-secondary">Ir a Crear Proyecto</a>
                 </div>
             </div>

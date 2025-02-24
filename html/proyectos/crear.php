@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="date" name="fechaFin" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Crear Proyecto</button>
-            <a href="leer.php" class="btn btn-secondary">Cancelar</a>
+            <a href="index.php" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>
