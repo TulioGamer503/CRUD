@@ -37,10 +37,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <title>Crear Tarea</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../index.php">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <h4>Crear Tarea</h4>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link active" href="../index.php">Regresar</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
     <div class="container mt-5">
         <h2>Crear Nueva Tarea</h2>
         <form action="crear.php" method="post">
@@ -90,8 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php } ?>
                 </select>
             </div>
-            <button type="submit" class="btn btn-success">Crear Tarea</button>
-            <a href="leer.php" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Crear Tarea</button>
+            <a href="../index.php" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

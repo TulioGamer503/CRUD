@@ -1,0 +1,108 @@
+
+.navbar{
+    padding: 0 !important;
+}
+
+.navbar .container-fluid{
+    background-color: #3E5879;
+    padding: 0;
+
+}
+
+.navbar .navbar-brand{
+    padding: 10px;
+    background-color: #213555;
+    color: white;
+}
+
+.navbar-collapse{
+    display: flex;
+    justify-content: right;
+    margin-right: 10px;
+}
+
+.navbar-collapse h4{
+color: white;
+}
+
+.navbar-collapse .navbar-nav .nav-item a{
+color: white;
+font-size: 18px;
+}
+
+.navbar-collapse .navbar-nav .nav-item a:hover{
+    transition: 0.5s;
+    background-color:#213555;
+    color: #ffff;
+    transform: translateY(6px);
+}
+
+
+#inicio{
+    width: 100%;
+    height: 700px;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1l7CPXxXwaVX9MMSc41gZPlhHzBujKcWLUppuvwr_dJzYq-Cm8P4HNtljfBly9d6dWYc&usqp=CAU);
+    background-size: cover;
+}
+
+#inicio .contenedor h1{
+    font-size: 70px;
+    color: black;
+    color: white;
+    font-family:monospace;
+}
+
+#inicio .contenedor{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+#inicio .contenedor .botones{
+    display: flex;
+    gap: 80px;
+}
+
+#inicio .contenedor .botones .btn{
+    border: none;
+    background-color: #B9B28A;
+    height: 0px;
+    width: 200px;
+    font-size: 30px;
+    color: #c5c3bc;
+}
+
+#inicio .contenedor .botones .btn:hover{
+transition: 0.3s;
+transform: translateY(-7px);
+background-color: #504B38;
+color: #B9B28A;
+}
+
+.mt-5{
+    display: flex;
+    flex-direction: column;
+}
+
+.mt-5 .mt-4{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mt-5 .mt-4 .col-md-4 .mb-3 .card-header{
+    background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+color: rgb(25, 25, 25);
+    
+}
+
+.card-body{
+    background: rgb(251, 251, 251) !important;
+    color: black !important;
+}
+

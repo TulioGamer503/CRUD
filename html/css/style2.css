@@ -1,0 +1,58 @@
+.mt-5{
+    width: 100% !important;
+    padding: 10px;
+    border-radius: .5rem;
+    background-color: #feffff;
+    box-shadow: 1px 4px 10px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 100px;
+}
+
+.mt-5 form .mb-3 .form-control{
+    border: 1px solid rgb(184, 177, 177) !important;
+    background-color: transparent;
+}
+
+.link{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding: 30px 40px 10px 0px;
+    font-size: 20px;
+}
+
+.link .link-crear-tarea{
+text-decoration: none;
+}
+
+.link .link-crear-tarea:hover{
+transition: 0.3s;
+color: rgb(76, 97, 128);
+}
+
+.container-info{
+    margin-top: 10px;
+    min-height: 200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-left:55px;
+}
+
+.container-info .titulo{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(218, 223, 223);
+    padding: 5px 10px 0px 10px;
+}
+.container-info .tarea-info{
+    margin-bottom: 20px;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: .5rem;
+    width: 600px;
+    box-shadow: 1px 4px 10px 2px rgba(0, 0, 0, 0.3);
+}
+
+.container-info .tarea-info p{
+margin: 5px 10px 10px 20px;
+}
+

@@ -13,7 +13,9 @@ $query = "SELECT * FROM proyectos WHERE idUsuario = ?";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "i", $idUsuario);
 mysqli_stmt_execute($stmt);
+
 $resultado = mysqli_stmt_get_result($stmt);
+$numProyectos = mysqli_num_rows($resultado);
 ?>
 
 <!DOCTYPE html>
@@ -22,37 +24,54 @@ $resultado = mysqli_stmt_get_result($stmt);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Proyectos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Tus Proyectos</h2>
-        <a href="index.php" class="btn btn-primary mb-3">Regresar</a>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($proyecto = mysqli_fetch_assoc($resultado)) { ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($proyecto['nombreProyecto']); ?></td>
-                        <td><?php echo htmlspecialchars($proyecto['descripcion']); ?></td>
-                        <td><?php echo $proyecto['fechaInicio']; ?></td>
-                        <td><?php echo $proyecto['fechaFin']; ?></td>
-                        <td>
-                            <a href="editar.php?id=<?php echo $proyecto['idProyecto']; ?>" class="btn btn-warning btn-sm">Editar</a>
-                            <a href="eliminar.php?id=<?php echo $proyecto['idProyecto']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que quieres eliminar este proyecto?');">Eliminar</a>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../index.php">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <h4>Lista de Proyectos</h4>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link active" href="index.php">Regresar</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="link">
+<a class="link-crear-tarea" href="crear.php">Crear nuevo Proyecto+</a>
+</div>
+<?php if($numProyectos>0):?>
+    <div class="container-info">
+<?php while ($proyecto = mysqli_fetch_assoc($resultado)) { ?>
+<div class="tarea-info">
+
+    <div class="titulo">
+<h2><?php echo htmlspecialchars($proyecto['nombreProyecto']); ?></h2>
+</div>
+<p><strong>Descripción: </strong><?php echo htmlspecialchars($proyecto['descripcion']); ?></br></p>
+<p><strong>Fecha Inicio: </strong><?php echo $proyecto['fechaInicio']; ?></p>
+<p><strong>Fecha Fin: </strong><?php echo $proyecto['fechaFin']; ?></p>
+<p>
+<a href="editar.php?id=<?php echo $proyecto['idProyecto']; ?>" class="btn btn-warning btn-sm">Editar</a>
+<a href="eliminar.php?id=<?php echo $proyecto['idProyecto']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que quieres eliminar este proyecto?');">Eliminar</a>
+</p>
+</div>
+<?php } 
+else: ?>
+<div class="alert alert-warning" role="alert">
+                No haz creado ningun proyecto.
+            </div>
+        <?php endif; ?>
     </div>
 </body>
 </html>

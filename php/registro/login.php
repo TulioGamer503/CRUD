@@ -22,8 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (password_verify($contraseña, $usuario["contraseña"])) {
                     $_SESSION["usuario_id"] = $usuario["idUsuario"];
                     $_SESSION["usuario_nombre"] = $usuario["nombre"];
-                    
-                    echo "Inicio de sesión exitoso. <a href='../../html/index.php'>Ir al panel</a>";
+                    ?>
+                    <script>window.location.href="../../html/index.php"</script>
+                        <?php
                 } else {
                     echo "❌ Contraseña incorrecta.";
                 }

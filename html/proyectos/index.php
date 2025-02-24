@@ -13,6 +13,7 @@ if (!isset($_SESSION["usuario_id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Proyectos</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -23,39 +24,42 @@ if (!isset($_SESSION["usuario_id"])) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
+        <h4>Proyectos</h4>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="proyectos/index.php">proyectos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="comentarios/index.php">Comentarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="historial/index.php">historial</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-danger" href="../php/registro/logout.php">Cerrar Sesión</a>
+                    <a class="nav-link active" href="../index.php">Regresar</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
     <div class="container mt-5">
-        <h2 class="mb-4">Gestión de Proyectos</h2>
-        <div class="row">
-            <div class="col-md-3">
-                <a href="crear.php" class="btn btn-success w-100">Crear Proyecto</a>
+        
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Crear Proyecto</div>
+                <div class="card-body">
+                    <p class="card-text">Organiza tus pendientes y define tus prioridades.</p>
+                    <a href="crear.php" class="btn btn-outline-secondary">Crear Proyecto</a>
+                </div>
             </div>
-            <div class="col-md-3">
-                <a href="leer.php" class="btn btn-primary w-100">Ver Proyectos</a>
-            </div>
-            <!--<div class="col-md-3">
-                <a href="editar.php" class="btn btn-warning w-100">Actualizar Proyecto</a>
-            </div>-->
-            <div class="col-md-3">
-                <a href="eliminar.php" class="btn btn-danger w-100">Eliminar Proyecto</a>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Ver y Editar Proyecto</div>
+                <div class="card-body">
+                    <p class="card-text">Consulta, edita y actualiza tus proyectos fácilmente.</p>
+                    <a href="leer.php" class="btn btn-outline-secondary">Ver Proyectos</a>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
