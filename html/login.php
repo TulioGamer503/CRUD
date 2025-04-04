@@ -14,7 +14,7 @@
 
 <div class="contenedor-imagen">
 <div class="titulo">
-  <h1>HOLA TAREA</h1>
+  <h1>BIENVENIDO</h1>
   </div>
 </div>
 <div class="contenedor-elementos">
